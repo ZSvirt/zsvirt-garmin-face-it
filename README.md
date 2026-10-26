@@ -4,6 +4,8 @@
 
 本仓库独立维护ZSvirt Time。Connect IQ工程位于仓库根目录；源码、资源、构建脚本、设备矩阵和发布记录均在本仓库内。项目从`garmin-face-it/watchfaces/zsvirt-time`提取，保留7个相关Git历史提交；原始发布记录中的旧路径和提交链接是当时的证据。
 
+本次迁移、GitHub推送与群通知结果见[独立仓库回执](docs/repository-split.html)，接续开发见[仓库交接](docs/codex-handoffs/2026-10-26-standalone-repository.md)。
+
 以本地时间与ZSvirt官方Logo为主视觉，显示电量和今日步数的Connect IQ表盘。1.3.0扩展至69个官方设备目标，覆盖Enduro、Forerunner及本机官方设备包中的全部35个fēnix目标；完整清单以[独立设备矩阵](docs/compatibility.json)为准。
 
 - 黑底白字，正式横版 Logo 等比缩放；时间、Logo 和数据根据屏幕与实际字体尺寸排布。

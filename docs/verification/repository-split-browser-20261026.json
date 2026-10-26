@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-26",
+  "file": "docs/repository-split.html",
+  "tern_owner": 2237677961422,
+  "tern_receipt_block": 2237677961612,
+  "tern_tab_layout": {
+    "id": 2237677961423,
+    "shown": true,
+    "zoomed": false,
+    "splits": {
+      "Split": {
+        "id": 2237677961600,
+        "axis": "Row",
+        "ratio": 0.5,
+        "a": {
+          "Split": {
+            "id": 5171140624385,
+            "axis": "Row",
+            "ratio": 0.5,
+            "a": {
+              "Leaf": 2237677961422
+            },
+            "b": {
+              "Leaf": 2237677961612
+            }
+          }
+        },
+        "b": {
+          "Leaf": 2237677961599
+        }
+      }
+    }
+  },
+  "native_narrow_light": {
+    "width": 390,
+    "height": 249,
+    "viewportWidth": 390,
+    "scrollWidth": 390,
+    "title": "ZSvirt Time · 独立仓库迁移回执",
+    "background": "rgb(255, 255, 255)",
+    "logoLoaded": true,
+    "notification": true,
+    "repositoryLink": "https://github.com/ZSvirt/zsvirt-garmin-face-it",
+    "localLinks": [
+      "verification/repository-split-20261026.json",
+      "codex-handoffs/2026-10-26-standalone-repository.md",
+      "../README.md",
+      "delivery.html"
+    ]
+  },
+  "native_narrow_dark": {
+    "width": 390,
+    "viewportWidth": 390,
+    "scrollWidth": 390,
+    "background": "rgb(18, 24, 29)",
+    "color": "rgb(228, 235, 240)",
+    "logoLoaded": true
+  },
+  "local_links": [
+    {
+      "href": "verification/repository-split-20261026.json",
+      "exists": true
+    },
+    {
+      "href": "codex-handoffs/2026-10-26-standalone-repository.md",
+      "exists": true
+    },
+    {
+      "href": "../README.md",
+      "exists": true
+    },
+    {
+      "href": "delivery.html",
+      "exists": true
+    }
+  ],
+  "wide_headless_dom": {
+    "width": 1100,
+    "height": 900,
+    "viewportWidth": 1100,
+    "scrollWidth": 1100,
+    "title": "ZSvirt Time · 独立仓库迁移回执",
+    "logoLoaded": true
+  },
+  "native_page_errors": {
+    "entries": [],
+    "nextSeq": 0,
+    "dropped": 0
+  },
+  "headless_page_errors": {
+    "entries": [],
+    "nextSeq": 0,
+    "dropped": 0
+  },
+  "wide_visual_screenshot_obtained": false,
+  "tool_limitations": [
+    "Tern docked browser blocks use their actual size and reject viewport emulation.",
+    "Headless full-page and viewport screenshot attempts each timed out after 20 seconds. Wide DOM geometry passed; native narrow screenshots were obtained and inspected."
+  ],
+  "temporary_headless_page_closed": true,
+  "tern_driver_released": true,
+  "tern_state_after_release": {
+    "ok": {
+      "url": "file:///Users/zixiaobowen/ZStack/zsvirt-garmin-face-it/docs/repository-split.html",
+      "title": "ZSvirt Time · 独立仓库迁移回执",
+      "loading": false,
+      "progress": 1.0,
+      "back": false,
+      "forward": false,
+      "width": 584.7617797851562,
+      "height": 1258.4482421875,
+      "shown": true,
+      "focused": true,
+      "error": null
+    }
+  }
+}

@@ -12,7 +12,10 @@
 - 逐文件核验52个构建输入，与原工程一致。UUID继续为`cb51f19636e64ae1b979bfd8bf070e31`；原签名密钥位于仓库外，未复制、链接或提交。
 - 原始1.0.0、1.1.0、1.2.0、1.3.0商店包及本地发布材料已复制到本仓库`artifacts/`，四个IQ包SHA-256均与原件一致；这些产物不提交Git。
 - 更新README、开发约束、隐私支持链接、历史发布HTML页脚；加入根`.gitignore`、`AGENTS.md`，保留四份历史交接及Enduro 3安装回读记录。
-- GitHub公开仓库已创建；代码推送与群通知结果待写入本交接。
+- 新仓库公开属性、默认分支`main`及迁移提交`df86753d20754e50a94efffb9afead545a1731d2`已通过GitHub API回读确认。原仓库迁出提交`68252686ef9aec79e6e12a15af84ab468152d7fb`已推送到原仓库`main`，远端`watchfaces/`仅保留耐力仪表应用。
+- 已于2026-10-26 18:47向用户指定的钉钉「ZSvirt开源社区建设群」发送新仓库链接，并从群消息回读确认正文与请求一致（仅Markdown空白规整）。此次回读只取最近5条，`complete=false`、`hasMore=true`、`stopReason=single_page`，不声称读取全群历史；无失败项。含会话及消息标识的原始回执仅存于本地`.local/repository-split-notification.json`，不提交Git。
+- 最终迁移回执为`docs/repository-split.html`，README已添加入口。已绑定当前`TERN_PANE=2237677961422`打开浏览器块`2237677961612`，原生布局确认其位于当前终端右侧。已释放接管，回读`shown=true`、`loading=false`、无页面错误，保留用户可见分栏。
+- HTML的390像素窄屏浅色/深色截图已检查，Logo加载正常、无横向溢出、四个本地证据链接均存在；1100像素宽屏DOM几何检查通过。原生页面及临时无窗口浏览器均未记录页面错误。Tern已固定的块拒绝视口模拟，临时无窗口浏览器的全页及视口截图各超时20秒，因此不宣称取得宽屏截图；该临时页已关闭。详见[浏览器验收记录](../verification/repository-split-browser-20261026.json)。
 
 详细记录：[迁移验证JSON](../verification/repository-split-20261026.json)。
 
