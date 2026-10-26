@@ -8,7 +8,7 @@ ZSvirt Time在手表上显示本地时间、系统选择的12/24小时制、内�
 
 本应用免费，无广告、订阅或付费解锁。它不需要单独注册账号。Garmin设备、Connect IQ商店和Garmin服务各自的数据处理由Garmin的政策约束，不由本应用控制。
 
-问题反馈：[GitHub Issues](https://github.com/Zixiaobowen/garmin-face-it/issues)。请注明ZSvirt Time、设备型号与问题描述；该渠道公开可见，请勿提交密码、健康记录或其它私人信息。支持由开发者按可用时间提供，不承诺固定响应时限。
+问题反馈：[GitHub Issues](https://github.com/ZSvirt/zsvirt-garmin-face-it/issues)。请注明ZSvirt Time、设备型号与问题描述；该渠道公开可见，请勿提交密码、健康记录或其它私人信息。支持由开发者按可用时间提供，不承诺固定响应时限。
 
 ## English
 
@@ -16,4 +16,4 @@ ZSvirt Time displays the watch's local time, the system's 12/24-hour preference,
 
 The app is free, with no advertising, subscriptions, or paid unlocks. It requires no separate account. Garmin devices, the Connect IQ Store, and Garmin services are governed by Garmin's own policies and are outside this app's control.
 
-Support: [GitHub Issues](https://github.com/Zixiaobowen/garmin-face-it/issues). Include ZSvirt Time, your device model, and a description of the issue. This is a public channel; do not submit passwords, health records, or other private information. Support is provided as developer availability permits, without a guaranteed response time.
+Support: [GitHub Issues](https://github.com/ZSvirt/zsvirt-garmin-face-it/issues). Include ZSvirt Time, your device model, and a description of the issue. This is a public channel; do not submit passwords, health records, or other private information. Support is provided as developer availability permits, without a guaranteed response time.

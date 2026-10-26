@@ -1,6 +1,6 @@
 # ZSvirt Time 开发约束
 
-本说明仅约束 `watchfaces/zsvirt-time/`。主视觉为本地时间和 ZSvirt 官方 Logo，辅以电量、今日步数；用户持有 Enduro 3。设备集合覆盖Enduro、Forerunner与本机官方设备包中的35个fēnix目标，明确包含fēnix6/6S/6X标准版、Pro、Sapphire与Solar变体。本应用的矩阵、资源、UUID、配置、构建和发布证据完全独立。
+本说明约束独立仓库`ZSvirt/zsvirt-garmin-face-it`；仓库根即Connect IQ应用根。主视觉为本地时间和ZSvirt官方Logo，辅以电量、今日步数；用户持有Enduro 3。设备集合覆盖Enduro、Forerunner与本机官方设备包中的35个fēnix目标，明确包含fēnix6/6S/6X标准版、Pro、Sapphire与Solar变体。矩阵、资源、UUID、配置、构建和发布证据均由本仓库独立维护。
 
 ## 身份与配置
 
@@ -21,7 +21,7 @@
 
 ## 调度与验证
 
-从仓库根使用 `python3 watchfaces/zsvirt-time/scripts/build.py`；应用根可用 `python3 scripts/build.py`。默认 `--device enduro3`；`--all` 构建本应用全部目标；`--simulator`、`--run`、`--test` 使用官方对应模拟器目标。
+从本仓库根使用`python3 scripts/build.py`。默认`--device enduro3`；`--all`构建本应用全部目标；`--simulator`、`--run`、`--test`使用官方对应模拟器目标。脚本按自身位置确定应用根，不依赖当前工作目录或原`garmin-face-it`仓库。
 
 `--run` 要求官方模拟器已启动，并持续连接直到应用结束。切换目标前使用 **File → Kill Device**，确认窗口回到空设备；仅Kill App会保留上一设备。截图时核对实际窗口目标，结束本任务时退出本次独占启动的模拟器。保留原始日志及退出码，不能把超时记为成功。
 

@@ -1,6 +1,8 @@
 # ZSvirt Time
 
-[返回工作区](../../README.md) · [开发约束](docs/garmin-dev-project.md)
+[GitHub 仓库](https://github.com/ZSvirt/zsvirt-garmin-face-it) · [开发约束](docs/garmin-dev-project.md) · [问题反馈](https://github.com/ZSvirt/zsvirt-garmin-face-it/issues)
+
+本仓库独立维护ZSvirt Time。Connect IQ工程位于仓库根目录；源码、资源、构建脚本、设备矩阵和发布记录均在本仓库内。项目从`garmin-face-it/watchfaces/zsvirt-time`提取，保留7个相关Git历史提交；原始发布记录中的旧路径和提交链接是当时的证据。
 
 以本地时间与ZSvirt官方Logo为主视觉，显示电量和今日步数的Connect IQ表盘。1.3.0扩展至69个官方设备目标，覆盖Enduro、Forerunner及本机官方设备包中的全部35个fēnix目标；完整清单以[独立设备矩阵](docs/compatibility.json)为准。
 
@@ -13,35 +15,35 @@
 
 fēnix6系列包含`fenix6`、`fenix6pro`、`fenix6s`、`fenix6spro`和`fenix6xpro`，由官方目标覆盖6／6S／6X的标准版、Pro、Sapphire、Solar及对应区域变体。另包含官方fēnix3、5、7、8、9、Chronos和E目标。最低API为1.4.0；部分旧机地区固件仍为API1.3.1，未包含在发行包中，具体可用型号以商店兼容列表为准。
 
-1.3.0已提交Connect IQ，内部版本4、状态PENDING；商店主记录确认116个区域型号，fēnix6系列对应20个区域型号全部包含，实际兼容页已显示6／6S／6X及Pro、Sapphire、Solar变体。[商店预览](https://apps-developer.garmin.com/zh-CN/apps/2702e86b-ba01-44ed-9d5a-9b29777945f4?tid=1)在审核通过前仅账户本人可见，详见[发布记录](docs/release-1.3.0.md)。历史原包及1.0.0–1.2.0记录保留。
+2026-10-26提交1.3.0时，Connect IQ内部版本为4、状态为PENDING；商店主记录确认116个区域型号，fēnix6系列对应20个区域型号全部包含，实际兼容页已显示6／6S／6X及Pro、Sapphire、Solar变体。[商店预览](https://apps-developer.garmin.com/zh-CN/apps/2702e86b-ba01-44ed-9d5a-9b29777945f4?tid=1)在审核通过前仅账户本人可见，详见[发布记录](docs/release-1.3.0.md)。历史原包及1.0.0–1.2.0记录保留。
 
 ## 构建与运行
 
-使用 Connect IQ SDK、Java 17、矩阵中的官方设备包及仓库外原签名密钥。构建需要 Python 3.11+；重新生成图片需要 Pillow。以下命令从仓库根执行：
+使用Connect IQ SDK、Java 17、矩阵中的官方设备包及仓库外原签名密钥。构建需要Python 3.11+；重新生成图片需要Pillow。现有签名默认位于`~/.local/share/garmin-face-it/developer_key.der`，这是仓库外的签名身份，不依赖旧仓库目录；其它环境通过`--key /path/to/developer_key.der`提供原密钥。以下命令均从本仓库根目录执行：
 
 ```sh
 # 构建 Enduro 3 真机 PRG（默认目标）
-python3 watchfaces/zsvirt-time/scripts/build.py --device enduro3
+python3 scripts/build.py --device enduro3
 
 # 构建本表盘全部69个目标
-python3 watchfaces/zsvirt-time/scripts/build.py --all
+python3 scripts/build.py --all
 
 # 官方模拟器已启动时，运行去除调试信息后的目标
-python3 watchfaces/zsvirt-time/scripts/build.py --device fr265 --release --run
+python3 scripts/build.py --device fr265 --release --run
 
 # 全目标签名商店包
-python3 watchfaces/zsvirt-time/scripts/build.py --package 1.3.0
+python3 scripts/build.py --package 1.3.0
 
 # 需要修改时制逻辑时运行边界测试
-python3 watchfaces/zsvirt-time/scripts/build.py --device enduro3 --test --run
+python3 scripts/build.py --device enduro3 --test --run
 
 # 从正式源图重建尺寸、调色板及 launcher 资源
-python3 watchfaces/zsvirt-time/scripts/generate-resources.py
+python3 scripts/generate-resources.py
 ```
 
-构建前自动从 `docs/compatibility.json` 生成 `manifest.xml` 和 `monkey.jungle`，并生成本次目标的构建快照；不要手改生成配置。独立使用 `python3 watchfaces/zsvirt-time/scripts/configure.py` 可重新生成配置。工程不依赖另一款表盘的文件。
+构建前自动从`docs/compatibility.json`生成`manifest.xml`和`monkey.jungle`，并生成本次目标的构建快照；不要手改生成配置。使用`python3 scripts/configure.py`可单独重新生成配置。本工程不依赖原工作区或另一款表盘的文件。
 
-也可在应用根运行 `python3 scripts/build.py`。支持 `--sdk`、`CIQ_SDK_HOME` 与 `--key`；SDK 不明确或签名密钥缺失时直接报错。真机产物为 `bin/zsvirt-time-<device>.prg`；带 `-sim`、`-sim-release`、`-tests` 的文件仅供官方模拟器。日志、哈希和退出码保留在 `bin/`。
+支持`--sdk`、`CIQ_SDK_HOME`与`--key`；SDK不明确或签名密钥缺失时直接报错。真机产物为`bin/zsvirt-time-<device>.prg`；带`-sim`、`-sim-release`、`-tests`的文件仅供官方模拟器。日志、哈希和退出码保留在`bin/`；构建产物与密钥不提交Git。
 
 `--run` 持续连接应用直到结束。切换机型前在模拟器使用 **File → Kill Device**，防止沿用上一款设备；只执行 Kill App 不足以切换目标。结束本轮验收后退出本次独占启动的模拟器。
 
@@ -55,6 +57,8 @@ Logo 属于 ZSvirt 品牌资产；官网下载页未附单独 Logo 许可，不�
 
 ## 验收边界
 
-构建、模拟器显示、商店提交、真机安装与续航分别验收。实际画面和本轮结果见 [HTML 回执](docs/delivery.html)。2026-10-26已将此前Enduro 3专用的时间＋Logo＋电量＋步数版侧载并回读校验，14,844字节安装包与设备回读逐字节一致，详见[安装记录](docs/verification/enduro3-installation-20261026.json)；安装期间并行产生的后续改动不属于这次已安装版本。尚未验收腕上显示或测量续航；AMOLED 亮像素检查不能替代真机烧屏与功耗验证。没有运行全仓库测试。
+构建、模拟器显示、商店提交、真机安装与续航分别验收。既有画面及1.3.0发布结果见[发布回执](docs/delivery.html)。2026-10-26已将此前Enduro 3专用的时间＋Logo＋电量＋步数版侧载并回读校验，14,844字节安装包与设备回读逐字节一致，详见[安装记录](docs/verification/enduro3-installation-20261026.json)；安装期间并行产生的后续改动不属于这次已安装版本。尚未验收腕上显示或测量续航；AMOLED亮像素检查不能替代真机烧屏与功耗验证。
 
-[隐私说明](docs/privacy.md) · [问题反馈](https://github.com/Zixiaobowen/garmin-face-it/issues)
+独立仓库迁移已逐文件核验52个构建输入，确认与迁出前一致；新路径下Enduro 3、fēnix 6 Pro真机目标及FR265去除调试信息的模拟器目标构建通过。1.0.0–1.3.0原始商店包复制后哈希一致，保留在本地`artifacts/`。详见[迁移验证记录](docs/verification/repository-split-20261026.json)。本轮未重新运行模拟器、单元测试或全仓库测试，也未再次上传商店或安装手表。
+
+[隐私说明](docs/privacy.md) · [问题反馈](https://github.com/ZSvirt/zsvirt-garmin-face-it/issues)
