@@ -14,18 +14,27 @@ SDK9.2.0、Java17、原签名身份。最终改名后的签名导出116/116区�
 
 - 发行包：`artifacts/zsvirt-girl/release-1.1.0/zsvirt-girl-1.1.0.iq`，2,033,286字节。
 - SHA-256：`09c39103c276b15ee4882b799df892a740b6d0c6601d148ebd3b906b02825c63`。
-- 已实际观察8个代表目标：Enduro3、FR45、FR920XT、FR230、fēnix3、fēnix6S Pro、fēnix6 Pro、FR265S。截图取得后仅修改应用名称资源，渲染源码和人物资源未变。
+- 已实际观察12个代表目标，覆盖全部12种分辨率：Enduro3、FR45、FR920XT、FR230、fēnix3、fēnix6S Pro、fēnix6 Pro、FR265S、FR165、FR265、FR965、fēnix9 Pro 51mm。前7个MIP目标的截图取得后仅修改名称资源，渲染源码和人物资源未变；5个AMOLED代表目标均已运行最终改名资源并检查休眠、唤醒。
 - Enduro3通过24/12小时制、简体中文和自然跨月检查：`10/31 11:59 PM`更新为`11/01 12:00 AM`。
 - FR45在48 KiB内存目标上显示正常，观察占用约22 KiB；矩形和半圆屏底栏未见裁切。
 - FR265S两帧原始360×360 AOD截图：亮像素1303与1259，按圆形屏幕101780个像素计算为1.280%与1.237%；两帧重叠亮像素为0。低于10%不等同于真机功耗或烧屏寿命验证。
+- 最终改名后的FR265S在休眠中从`10/31 11:59 PM`自然切换到`11/01 12:00 AM`，时间位置上下切换；唤醒恢复人物画面及`11/01`日期。另4个AMOLED目标的发行构建、完整画面、常亮画面与唤醒均通过，模拟器运行退出码均为0。
 - 受影响的原ZSvirt Time构建：Enduro3与FR265发行模拟器目标成功。共享时制逻辑未改，没有重跑单元测试或全仓库测试。
 
 记录见[验证JSON](verification/zsvirt-super-girl-1.1.0.json)。
 
-## 当前边界
+## 商店与交付状态
 
-当前macOS锁屏，窗口和区域截图均被系统拒绝。390、416、454、466像素代表目标，以及AMOLED唤醒和跨午夜唤醒仍未完成有效视觉验收；不把原生界面超时或被终止的模拟器连接计为通过。
+锁屏阻塞已由用户解锁解除，剩余4种尺寸与AMOLED唤醒、跨午夜唤醒已完成。本任务模拟器已正常退出，退出码0。原生界面超时及之前被终止的连接未计为验收通过。
 
-商店资料已准备，旧名候选包仅进入上传验证，尚未最终提交。该原件保存在`artifacts/zsvirt-girl/release-1.1.0/validated-before-rename/`，没有用重建包覆盖。最终发布必须使用上面的改名后SHA，并回读新应用的商店ID、版本、签名结果与审核状态。
+2026-10-27已正常提交[ZSvirt 超分娘](https://apps.garmin.com/apps/e6c45ce6-48a7-4178-80ab-01df609acf41)，创建请求HTTP200。商店ID为`e6c45ce6-48a7-4178-80ab-01df609acf41`，版本`1.1.0`，内部版本1；状态从`PENDINGSCAN`变为`PENDING`，仍为仅发布账号可见的待审核预览。页面提示审核可能需要最多3天，这不是获批或可下载的保证。
+
+已回读英文、简体中文的名称、说明与更新说明，与`store-listing.json`逐字段一致；116个区域设备类型和料号已保存，封面及两张真实MIP/AMOLED截图已保存。应用免费、非Beta、无额外权限、不限制地区、不自动扩展设备，公开联系方式复用已有Time应用。
+
+初始预验证页曾同时显示`Verified`和签名失败提示；正常提交后，持久化元数据明确返回`signatureCheckSuccessFul=true`，重新打开编辑页显示`Signature: Verified`。未修改或绕过任何校验标志。首次预验证的通信错误重试一次后成功，创建应用仅提交一次。详见[商店回读记录](verification/zsvirt-super-girl-store-1.1.0.json)。
+
+上传的最终包与上述SHA一致；改名前的预验证原件继续保存在`artifacts/zsvirt-girl/release-1.1.0/validated-before-rename/`。实现提交`31b3829758a5efcc9ab6b367926e44b4a0c506ec`已推送到`feat/zsvirt-girl-device-release`并核对远端SHA。
+
+[HTML发布回执](zsvirt-super-girl-release.html)汇总画面、构建、商店与Git证据。
 
 本版本未安装到手表。2026-10-27侧载且回读一致的88,700字节PRG属于当时名为ZSvirt Girl的1.0.0；[历史安装记录](verification/zsvirt-girl-installation-20261027.json)不证明本次改名或1.1.0已安装。腕上显示和续航未验收。

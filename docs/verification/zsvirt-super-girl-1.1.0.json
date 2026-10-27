@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-10-27T20:00:01.452114+08:00",
+  "observed_at": "2026-10-27T21:09:20.735773+08:00",
   "application": "ZSvirt 超分娘",
   "application_id": "29b9c146b06f45d985a3cc93b6dde7d5",
   "version": "1.1.0",
@@ -102,9 +102,13 @@
     "fenix3",
     "fenix6spro",
     "fenix6pro",
-    "fr265s"
+    "fr265s",
+    "fr165",
+    "fr265",
+    "fr965",
+    "fenix9pro51mm"
   ],
-  "visual_evidence_note": "Screenshots were acquired before the final name-only resource update. Rendering source and portrait resources were unchanged by the rename. These are representative simulator checks, not every-device or physical-watch validation.",
+  "visual_evidence_note": "All 12 distinct resolutions were observed in the official simulator. Seven MIP target screenshots were acquired before the final name-only update; the rendering source and portrait resources were unchanged. All five AMOLED representatives were observed with the final renamed resources, including sleep and wake.",
   "verified_behaviors": [
     "Enduro 3 24h and 12h with AM/PM",
     "Enduro 3 Simplified Chinese locale",
@@ -112,7 +116,8 @@
     "FR45 48 KiB device renders at about 22 KiB",
     "FR920XT rectangular and FR230 clipped-round layouts",
     "fenix3 14-color palette and fenix6spro/fenix6pro MIP layouts",
-    "FR265S awake and two AMOLED minute-parity positions"
+    "FR265S awake and two AMOLED minute-parity positions",
+    "Final renamed FR265S: sleep at 10/31 11:59 PM, natural midnight transition to 12:00 AM in the opposite AOD position, wake restores portrait and 11/01 date"
   ],
   "amoled": {
     "even_pixels": 1303,
@@ -125,15 +130,15 @@
       "artifacts/zsvirt-girl/release-1.1.0/simulator/fr265s-aod-even.png",
       "artifacts/zsvirt-girl/release-1.1.0/simulator/fr265s-aod-odd.png"
     ],
-    "wake_verified": false,
-    "midnight_wake_verified": false
+    "wake_verified": true,
+    "midnight_wake_verified": true,
+    "midnight_wake_screenshots": [
+      "artifacts/zsvirt-girl/release-1.1.0/simulator/fr265s-midnight-sleep-before-window.png",
+      "artifacts/zsvirt-girl/release-1.1.0/simulator/fr265s-midnight-sleep-after-window.png",
+      "artifacts/zsvirt-girl/release-1.1.0/simulator/fr265s-midnight-wake-window.png"
+    ]
   },
-  "remaining_visual_targets": [
-    "fr165",
-    "fr265",
-    "fr965",
-    "fenix9pro51mm"
-  ],
+  "remaining_visual_targets": [],
   "regression_builds": {
     "time_enduro3": {
       "observed_at": "2026-10-27T11:14:58.884724+00:00",
@@ -162,12 +167,7 @@
       "sha256": "e10db1e16c45379003043e48a84101a4943ee992c5e4491eb5be9db7cf711b66"
     }
   },
-  "blocker": {
-    "kind": "macos_screen_locked",
-    "observed_screen_is_locked": true,
-    "window_capture_error": "could not create image from window",
-    "region_capture_error": "could not create image from rect"
-  },
+  "blocker": null,
   "automation_limitations": [
     "Native accessibility returned stale/empty window references during some dialog transitions. No UI timeout is counted as a pass.",
     "A renamed FR265S simulator client stalled; its owned shell transport was terminated. The resulting SDK exit code 0 is not accepted as runtime proof.",
@@ -178,8 +178,107 @@
     "sha256": "e2a96d2372121c7e244b2076a895041b27b760c18c805142ad54d53efd97b26d",
     "stage": "upload validation only; not submitted"
   },
-  "store_submitted": false,
+  "store_submitted": true,
   "new_version_installed_on_watch": false,
   "full_repository_tests_run": false,
-  "unit_tests_run": false
+  "unit_tests_run": false,
+  "final_named_simulator_runs": [
+    {
+      "device": "fr165",
+      "exit_code": 0,
+      "build_report": {
+        "observed_at": "2026-10-27T12:43:17.642249+00:00",
+        "face": "girl",
+        "sdk": "/Users/zixiaobowen/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.2.0-2026-06-09-92a1605b2",
+        "device": "fr165",
+        "compiler_device": "fr165_sim",
+        "compiled": true,
+        "exit_code": 0,
+        "program": "bin/zsvirt-girl/zsvirt-girl-fr165-sim-release.prg",
+        "unit_tests_included": false,
+        "bytes": 115740,
+        "sha256": "934d854f0c463209e748757d6869be6e839f2b6ee2793806ace95c8d51ac20eb",
+        "simulator_exit_code": 0
+      },
+      "awake_screenshot": "artifacts/zsvirt-girl/release-1.1.0/simulator/fr165-final-awake-window.png",
+      "aod_screenshot": "artifacts/zsvirt-girl/release-1.1.0/simulator/fr165-final-aod-window.png"
+    },
+    {
+      "device": "fr265",
+      "exit_code": 0,
+      "build_report": {
+        "observed_at": "2026-10-27T12:45:38.809149+00:00",
+        "face": "girl",
+        "sdk": "/Users/zixiaobowen/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.2.0-2026-06-09-92a1605b2",
+        "device": "fr265",
+        "compiler_device": "fr265_sim",
+        "compiled": true,
+        "exit_code": 0,
+        "program": "bin/zsvirt-girl/zsvirt-girl-fr265-sim-release.prg",
+        "unit_tests_included": false,
+        "bytes": 130796,
+        "sha256": "2de752f2393c379414360a2805935a6bf87c74b880f95e41f393b0eeb243a2dc",
+        "simulator_exit_code": 0
+      },
+      "awake_screenshot": "artifacts/zsvirt-girl/release-1.1.0/simulator/fr265-final-awake-window.png",
+      "aod_screenshot": "artifacts/zsvirt-girl/release-1.1.0/simulator/fr265-final-aod-window.png"
+    },
+    {
+      "device": "fr965",
+      "exit_code": 0,
+      "build_report": {
+        "observed_at": "2026-10-27T12:46:59.731150+00:00",
+        "face": "girl",
+        "sdk": "/Users/zixiaobowen/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.2.0-2026-06-09-92a1605b2",
+        "device": "fr965",
+        "compiler_device": "fr965_sim",
+        "compiled": true,
+        "exit_code": 0,
+        "program": "bin/zsvirt-girl/zsvirt-girl-fr965-sim-release.prg",
+        "unit_tests_included": false,
+        "bytes": 158220,
+        "sha256": "e5df0d44f4ac8bd3f17a055a8f98abd9abcd85d0575d652fddd7feedc030906a",
+        "simulator_exit_code": 0
+      },
+      "awake_screenshot": "artifacts/zsvirt-girl/release-1.1.0/simulator/fr965-final-awake-window.png",
+      "aod_screenshot": "artifacts/zsvirt-girl/release-1.1.0/simulator/fr965-final-aod-window.png"
+    },
+    {
+      "device": "fenix9pro51mm",
+      "exit_code": 0,
+      "build_report": {
+        "observed_at": "2026-10-27T12:48:24.064753+00:00",
+        "face": "girl",
+        "sdk": "/Users/zixiaobowen/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.2.0-2026-06-09-92a1605b2",
+        "device": "fenix9pro51mm",
+        "compiler_device": "fenix9pro51mm_sim",
+        "compiled": true,
+        "exit_code": 0,
+        "program": "bin/zsvirt-girl/zsvirt-girl-fenix9pro51mm-sim-release.prg",
+        "unit_tests_included": false,
+        "bytes": 166828,
+        "sha256": "006bf4094ed9cac5522ccebc744d01d8b7db8ee7e331dbee03e67c5095c1fca6",
+        "simulator_exit_code": 0
+      },
+      "awake_screenshot": "artifacts/zsvirt-girl/release-1.1.0/simulator/fenix9pro51mm-final-awake-window.png",
+      "aod_screenshot": "artifacts/zsvirt-girl/release-1.1.0/simulator/fenix9pro51mm-final-aod-window.png"
+    }
+  ],
+  "resolved_blockers": [
+    {
+      "kind": "macos_screen_locked",
+      "observed_screen_is_locked": true,
+      "window_capture_error": "could not create image from window",
+      "region_capture_error": "could not create image from rect",
+      "resolved": "User unlocked the desktop; remaining simulator scenarios completed."
+    }
+  ],
+  "git": {
+    "branch": "feat/zsvirt-girl-device-release",
+    "implementation_commit": "31b3829758a5efcc9ab6b367926e44b4a0c506ec",
+    "remote_sha_verified": true
+  },
+  "store_receipt": "docs/verification/zsvirt-super-girl-store-1.1.0.json",
+  "store_status": "PENDING",
+  "simulator_normal_exit_code": 0
 }

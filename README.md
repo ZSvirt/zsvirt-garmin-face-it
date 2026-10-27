@@ -36,7 +36,7 @@ python3 scripts/build.py --face girl --device enduro3 --release --run
 python3 scripts/build.py --face girl --package 1.1.0
 ```
 
-真机PRG在`bin/zsvirt-girl/zsvirt-girl-enduro3.prg`，1.1.0本地IQ包在`artifacts/zsvirt-girl/release-1.1.0/`。全目标签名导出已完成，116/116个区域目标成功；此结果仅代表SDK导出，不代表全部模拟器、真机或商店验收通过。当前1.1.0尚未安装到手表、尚未上传商店；后续商店状态和模拟器证据统一记录在[1.1.0发布记录](docs/release-zsvirt-girl-1.1.0.md)。
+真机PRG在`bin/zsvirt-girl/zsvirt-girl-enduro3.prg`，1.1.0原始IQ包在`artifacts/zsvirt-girl/release-1.1.0/`。全目标签名导出116/116成功；12种分辨率的代表设备已通过实际模拟器画面检查，5个AMOLED目标已检查休眠/唤醒，FR265S另通过跨午夜唤醒。2026-10-27已提交[Garmin商店](https://apps.garmin.com/apps/e6c45ce6-48a7-4178-80ab-01df609acf41)，签名回读通过，版本1.1.0、内部版本1、状态`PENDING`；审核通过前仅发布账号可见。当前1.1.0尚未安装到手表。详见[发布记录](docs/release-zsvirt-girl-1.1.0.md)、[HTML回执](docs/zsvirt-super-girl-release.html)及[当前交接](docs/codex-handoffs/2026-10-27-zsvirt-super-girl-release.md)。
 
 历史安装：2026-10-27已将当时名为`ZSvirt Girl`的1.0.0的88,700字节PRG侧载到Enduro 3，设备回读与当时暂存包逐字节一致，见[安装记录](docs/verification/zsvirt-girl-installation-20261027.json)。当前新名为`ZSvirt 超分娘`；该历史安装不包含本次改名及1.1.0的新改动，腕上显示与续航尚未验收。[1.0.0实际效果与验收](docs/zsvirt-girl.html) · [1.0.0交接](docs/codex-handoffs/2026-10-27-zsvirt-girl.md)。
 

@@ -1,0 +1,46 @@
+{
+  "observed_at": "2026-10-27T13:04:18.669Z",
+  "application": "ZSvirt 超分娘",
+  "app_id": "e6c45ce6-48a7-4178-80ab-01df609acf41",
+  "manifest_app_id": "29b9c146b06f45d985a3cc93b6dde7d5",
+  "url": "https://apps.garmin.com/apps/e6c45ce6-48a7-4178-80ab-01df609acf41",
+  "version": "1.1.0",
+  "internal_version": 1,
+  "status": "PENDING",
+  "publicly_available": false,
+  "preview_only": true,
+  "creation_http_status": 200,
+  "metadata_readback_http_status": 200,
+  "signature_check_successful": true,
+  "upload_prevalidation_signature_flag": false,
+  "upload_prevalidation_note": "Initial form displayed Signature check failed with Verified status; after normal creation, persisted metadata and Edit Details both report Signature: Verified. No signature or validation flag was modified.",
+  "regional_device_type_count": 116,
+  "regional_part_number_count": 116,
+  "named_device_count": 94,
+  "localizations": [
+    {
+      "locale": "en",
+      "name": "ZSvirt 超分娘",
+      "description": "A portrait watch face featuring the ZSvirt character, with a clean white background and the essentials at a glance.\n\nFEATURES\n• Large character artwork with a single-line clock.\n• Follows your watch's 12/24-hour setting, with AM/PM in 12-hour mode.\n• Local month/day in MM/DD format and battery percentage. The date format is the same in both languages.\n• MIP displays retain the full watch face in low-power mode.\n• On AMOLED displays, low-power mode shows a dim clock that changes position each minute; waking the watch restores the full artwork.\n\nCOMPATIBILITY\nSupports selected Garmin Enduro, fēnix and Forerunner models. Check this listing's Compatible Devices section for your exact model. Availability can vary by regional model and software version. Artwork colors and detail vary with the watch's screen resolution and color palette.\n\nLANGUAGES & PRIVACY\nEnglish and Simplified Chinese. Free, with no advertising, account registration or paid unlocks. Time, date and battery are read locally for display. No network connection, personal-data storage or data transmission.\n\nSUPPORT\nhttps://github.com/ZSvirt/zsvirt-garmin-face-it/issues\nInclude your watch model and a description of the issue; do not post private information.",
+      "whats_new": "First Connect IQ Store release as ZSvirt 超分娘. Supports multiple Enduro, fēnix and Forerunner models, layouts for different screen shapes and sizes, AMOLED low-power display behavior, and English/Simplified Chinese store information."
+    },
+    {
+      "locale": "zh_CN",
+      "name": "ZSvirt 超分娘",
+      "description": "以 ZSvirt 超分娘半身立绘为主视觉的简洁表盘，白色背景，时间与日常信息一目了然。\n\n功能\n• 大幅人物立绘与单行时间。\n• 跟随手表的 12/24 小时制；12 小时制显示 AM/PM。\n• 显示本地月日与电量百分比；中英文均采用 MM/DD 日期格式。\n• MIP 屏幕在低功耗状态保留完整画面。\n• AMOLED 屏幕在低功耗状态仅显示灰色时间，每分钟移动位置；唤醒后恢复完整人物画面。\n\n兼容性\n支持部分 Garmin Enduro、fēnix 与 Forerunner 型号，请在本页“兼容设备”中核对具体型号。是否可安装受区域型号及软件版本影响；人物颜色与细节会因屏幕分辨率、调色板而有所不同。\n\n语言与隐私\n提供英文与简体中文说明。免费，无广告、账号注册或付费解锁。时间、日期和电量仅在手表本地读取并显示，不联网、不保存个人数据、不向外传输数据。\n\n问题反馈\nhttps://github.com/ZSvirt/zsvirt-garmin-face-it/issues\n请注明手表型号与问题描述，勿提交私人信息。",
+      "whats_new": "以 ZSvirt 超分娘之名首次发布至 Connect IQ 商店。支持多个 Enduro、fēnix 与 Forerunner 型号，适配不同屏幕尺寸及形状，加入 AMOLED 低功耗显示，并提供英文与简体中文商店说明。"
+    }
+  ],
+  "localizations_match_source": true,
+  "permissions": [],
+  "payment_model": 0,
+  "beta": false,
+  "app_migration_allowed": false,
+  "screenshot_count": 2,
+  "public_contact_reused": true,
+  "package_path": "artifacts/zsvirt-girl/release-1.1.0/zsvirt-girl-1.1.0.iq",
+  "package_bytes": 2033286,
+  "package_sha256": "09c39103c276b15ee4882b799df892a740b6d0c6601d148ebd3b906b02825c63",
+  "network_note": "First package prevalidation request failed with Load failed after 25s; one retry returned HTTP 200. App creation was submitted once and returned HTTP 200.",
+  "review_notice": "Store page says approval can take up to 3 days; no approval deadline is guaranteed."
+}
