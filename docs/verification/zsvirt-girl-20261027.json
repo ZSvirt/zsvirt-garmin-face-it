@@ -1,0 +1,95 @@
+{
+  "observed_at": "2026-10-27T10:22:09.068571+00:00",
+  "app": "ZSvirt Girl",
+  "branch": "feat/zsvirt-girl-watchface",
+  "application_id": "29b9c146b06f45d985a3cc93b6dde7d5",
+  "devices": [
+    "enduro3"
+  ],
+  "final_behavior": [
+    "large visually centered portrait",
+    "single-line local time following 12/24h",
+    "local month/day MM/DD",
+    "battery percentage",
+    "no standalone logo",
+    "no step access or display"
+  ],
+  "builds": [
+    {
+      "command": "python3 scripts/build.py --face girl --device enduro3",
+      "exit_code": 0,
+      "bytes": 88700,
+      "sha256": "7129a3a8acfaf2f2e79a72f0411ffef6ae65305fde9455b35ad31cf93508da47",
+      "report": "bin/zsvirt-girl/build-enduro3.json"
+    },
+    {
+      "command": "python3 scripts/build.py --face girl --device enduro3 --release --run",
+      "compile_exit_code": 0,
+      "simulator_exit_code": 0,
+      "report": "bin/zsvirt-girl/build-enduro3-sim-release.json"
+    },
+    {
+      "command": "python3 scripts/build.py --face girl --package 1.0.0",
+      "exit_code": 0,
+      "bytes": 17321,
+      "sha256": "271d527a44e87f6ba2753962930aa6ee89a71022c8a9bb884b332da7a09255fa",
+      "report": "artifacts/zsvirt-girl/release-1.0.0/package-report.json"
+    },
+    {
+      "command": "python3 scripts/build.py --face time --device enduro3",
+      "exit_code": 0,
+      "report": "bin/build-enduro3.json"
+    },
+    {
+      "command": "python3 scripts/build.py --face time --device fr265 --simulator --release",
+      "exit_code": 0,
+      "report": "bin/build-fr265-sim-release.json"
+    }
+  ],
+  "environment": {
+    "sdk": "9.2.0",
+    "java_home": "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home",
+    "key": "external existing signing identity; not copied"
+  },
+  "visual_cases": [
+    {
+      "time_format": "24h",
+      "visible_time": "18:14",
+      "date": "10/27",
+      "battery_percent": 100,
+      "window": "girl-final-window.png",
+      "crop": "girl-final-screen.png"
+    },
+    {
+      "time_format": "12h",
+      "visible_time": "06:16 PM",
+      "date": "10/27",
+      "battery_percent": 100,
+      "window": "girl-12h-window.png"
+    }
+  ],
+  "observations": {
+    "final_content_visible": true,
+    "standalone_logo_absent": true,
+    "steps_absent": true,
+    "portrait_shift_right_px": 10.338461538461539,
+    "clock_and_bottom_row_not_overlapping": true,
+    "device_target_in_window": "Enduro 3 (6.0.3)",
+    "runner_shutdown": "task-owned simulator terminated normally; runner exit 0"
+  },
+  "evidence_limits": [
+    "Images are real simulator window captures; girl-final-screen.png is a 560x560 crop at Retina scale, not File > Save Screen Capture raw pixels.",
+    "Native save-panel automation did not complete; no raw-pixel export is claimed.",
+    "Attempted 0% battery injection did not commit in the native control. The observed 12h case remained at 100%; no zero-battery pass is claimed.",
+    "After switching Display Mode, the simulator window ceased being accessible/on-screen. No high/low-power transition pass is claimed; the process remained running and was terminated normally."
+  ],
+  "not_performed": [
+    "midnight/month rollover injection",
+    "new or rerun unit tests",
+    "full repository tests",
+    "physical watch installation",
+    "on-wrist display or battery-life measurement",
+    "store upload/publication",
+    "git commit or push"
+  ]
+}

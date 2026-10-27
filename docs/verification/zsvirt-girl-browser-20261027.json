@@ -1,0 +1,32 @@
+{
+  "observed_on": "2026-10-27",
+  "receipt": "docs/zsvirt-girl.html",
+  "tern": {
+    "owner": 2237677961709,
+    "browser_block": 2237677961726,
+    "dock_command": "tern dock 2237677961726 right --json",
+    "dock_command_exit_code": 0,
+    "adoption": {"relay": false, "tern": true, "target": "2237677961726"},
+    "released_after_verification": true,
+    "final_state": {"loading": false, "progress": 1.0, "error": null, "shown": false, "focused": false},
+    "visibility_note": "Native browser reported that the user was viewing another Tern tab/session. The receipt remains bound and docked to this session, and appears when the user returns. No external browser was opened."
+  },
+  "wide": {"width": 1110, "theme_observed": "dark", "horizontal_overflow": false, "image_loaded": true, "page_errors": 0, "screenshot_inspected": true},
+  "narrow": {"width": 390, "theme": "dark", "scroll_width": 390, "horizontal_overflow": false, "image_loaded": true, "details_opened_by_click": true, "page_errors": 0, "screenshot_inspected": true, "headless": true, "temporary_tab_closed": true},
+  "corrected_during_verification": "Expanded details used an implicit grid column sized to the unwrapped command text. Both main and details now use minmax(0,1fr); long commands scroll inside pre instead of widening the page.",
+  "local_link_targets": 6,
+  "all_link_targets_exist": true,
+  "final_device_prg_hash_matches_verification_record": true,
+  "installation_update": {
+    "installation_record": "docs/verification/zsvirt-girl-installation-20261027.json",
+    "installed_status_and_activation_instructions_rendered": true,
+    "existing_receipt_block_reused": true,
+    "browser_targets_confirmed_docked": true,
+    "shown_when_inspected": false,
+    "visibility_note": "User was viewing another Tern tab/session; the updated receipt remains docked to owner 2237677961709 and appears on return.",
+    "native_docked_viewport_resize_supported": false,
+    "narrow_check_used_temporary_headless_tab": true,
+    "temporary_headless_tab_closed": true,
+    "native_receipt_handle_released": true
+  }
+}

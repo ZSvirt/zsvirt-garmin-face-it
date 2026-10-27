@@ -1,0 +1,18 @@
+{
+  "retrieved_on": "2026-10-27",
+  "assets": [
+    {
+      "file": "zsvirt-girl-portrait.png",
+      "source_repository": "zsvirt-site",
+      "source_path": "apps/zsvirt-studio/public/brand/super-girl/masters/portrait.png",
+      "local_source": "/Users/zixiaobowen/ZStack/zsvirt-site/apps/zsvirt-studio/public/brand/super-girl/masters/portrait.png",
+      "sha256": "855ed8f397882d7adb82c0679e7f432a6eee25686f7d24a89b43b1f2996cc89d",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    }
+  ],
+  "processing": "Normalize near-white source pixels (all RGB channels >=248) to white to prevent background dithering speckles. Preserve the head-and-upper-torso crop at (176,0,826,650), which shifts the portrait about 10 pixels right for visual centering on Enduro 3. Resize this square proportionally to the screen height, horizontally center it on the screen-width white canvas without stretching rectangular screens, fade to white between round(height*154/280) and round(height*172/280), then crop the stored bitmap to width by round(height*184/280). The white strip reserves the actual 62-pixel Enduro 3 number-font line box without overlapping the date row. MIP images use Floyd-Steinberg dithering with the exact official RGB palette entries, omitting TRANSPARENT slots for this opaque artwork; ARGB2222 uses RGB levels 0,85,170,255. AMOLED images use 16-bit RGB565 channel levels. Resource paths include dimensions and actual-palette identity, including distinct 14-color palettes. Launcher artwork preserves the face crop at (300,0,730,430), resized to each device's official launcher dimensions and palette. No separate ZSvirt logo. Reproduce with python3 scripts/generate-resources.py --face girl.",
+  "rights": "Existing ZSvirt character artwork from the official site source repository; no new drawing or change of character identity."
+}

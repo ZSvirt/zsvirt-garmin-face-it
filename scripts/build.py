@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build ZSvirt Time device targets, run a simulator, or export a store package."""
+"""Build a ZSvirt watchface, run a simulator, or export a store package."""
 import argparse
 import datetime
 import hashlib
@@ -10,7 +10,7 @@ import re
 import shlex
 import subprocess
 import sys
-from configure import write_configuration
+from configure import APPS, write_configuration
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_KEY = Path.home() / ".local/share/garmin-face-it/developer_key.der"
@@ -36,11 +36,13 @@ def sdk_path(explicit):
     return sdk
 
 
-def package_app(sdk, key, targets, version):
-    output = ROOT / "artifacts" / f"release-{version}"
+def package_app(sdk, key, targets, version, face):
+    application = APPS[face]
+    artifacts = ROOT / "artifacts" if face == "time" else ROOT / "artifacts" / application["stem"]
+    output = artifacts / f"release-{version}"
     config = output / "config"
-    devices = write_configuration(targets, config)
-    package = output / f"zsvirt-time-{version}.iq"
+    devices = write_configuration(targets, config, face)
+    package = output / f"{application['stem']}-{version}.iq"
     command = [str(sdk / "bin/monkeyc"), "-e", "-r", "-f", str(config / "monkey.jungle"),
                "-y", str(key), "-o", str(package), "-O", "2z", "-w", "--build-stats", "0"]
     build = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
@@ -60,6 +62,7 @@ def package_app(sdk, key, targets, version):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--face", choices=APPS, default="time", help="Independent watchface application")
     parser.add_argument("--sdk")
     parser.add_argument("--key", type=Path, default=DEFAULT_KEY)
     selection = parser.add_mutually_exclusive_group()
@@ -80,7 +83,8 @@ def main():
             parser.error("--package cannot be combined with simulator or test modes")
         if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", args.package):
             parser.error("Store version must use MAJOR.MINOR.PATCH, for example 1.0.0")
-    targets = json.loads((ROOT / "docs/compatibility.json").read_text())["targets"]
+    application = APPS[args.face]
+    targets = json.loads((application["root"] / "docs/compatibility.json").read_text())["targets"]
     products = [target["ciq_product_id"] for target in targets]
     devices = products if args.all or args.package is not None else [args.device or "enduro3"]
     if any(device not in products for device in devices):
@@ -88,23 +92,23 @@ def main():
     if not args.key.is_file():
         parser.error(f"Signing key missing: {args.key}; keep signing keys outside this repository")
     sdk = sdk_path(args.sdk)
-    write_configuration(targets, ROOT)
+    write_configuration(targets, application["root"], args.face)
     if args.package is not None:
-        return package_app(sdk, args.key, targets, args.package)
+        return package_app(sdk, args.key, targets, args.package, args.face)
     simulator = args.simulator or args.run or args.test
     suffix = "-tests" if args.test else "-sim" if simulator else ""
     if simulator and args.release:
         suffix += "-release"
-    output = ROOT / "bin"
+    output = ROOT / "bin" if args.face == "time" else ROOT / "bin" / application["stem"]
     logs = output / "logs"
     logs.mkdir(parents=True, exist_ok=True)
     results = []
     for device in devices:
         compiler_device = device + "_sim" if simulator else device
-        stem = f"zsvirt-time-{device}{suffix}"
+        stem = f"{application['stem']}-{device}{suffix}"
         program = output / f"{stem}.prg"
         config = output / "config" / device
-        write_configuration([target for target in targets if target["ciq_product_id"] == device], config)
+        write_configuration([target for target in targets if target["ciq_product_id"] == device], config, args.face)
         command = [str(sdk / "bin/monkeyc"), "-f", str(config / "monkey.jungle"),
                    "-d", compiler_device, "-y", str(args.key), "-o", str(program),
                    "-w", "--build-stats", "0"]
@@ -118,6 +122,7 @@ def main():
         (logs / f"{stem}.log").write_text("$ " + shlex.join(command) + "\n" + build.stdout + build.stderr)
         print(build.stdout + build.stderr, end="", flush=True)
         result = {"observed_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                  "face": args.face,
                   "sdk": str(sdk), "device": device, "compiler_device": compiler_device,
                   "compiled": build.returncode == 0, "exit_code": build.returncode,
                   "program": str(program.relative_to(ROOT)), "unit_tests_included": args.test}
