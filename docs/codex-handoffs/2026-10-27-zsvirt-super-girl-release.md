@@ -3,8 +3,8 @@
 ## Repo、分支与目标
 
 - Repo：`/Users/zixiaobowen/ZStack/zsvirt-garmin-face-it`。
-- 分支：`feat/zsvirt-girl-device-release`。
-- 已完成设备扩展、国际化、GitHub提交推送及Garmin Connect IQ提交；商店状态为`PENDING`，尚未公开上架。用户指定名字为 **ZSvirt 超分娘**，默认/中文应用名称及商店中英文标题均使用这个精确名称。
+- 当前分支：`main`；原开发分支：`feat/zsvirt-girl-device-release`。2026-10-29按用户“合并推送到master”的要求，核实远端默认分支实际为`main`后完成合并推送。
+- 已完成设备扩展、国际化、GitHub提交推送及Garmin Connect IQ提交；2026-10-27商店回读状态为`PENDING`，当时尚未公开上架，本次合并未重新查询商店。用户指定名字为 **ZSvirt 超分娘**，默认/中文应用名称及商店中英文标题均使用这个精确名称。
 - 保留正式半身立绘、大号单行时间、月日、电量；不增加Logo、步数、星期或秒。技术目录、类名、UUID不因显示名称改变。
 
 ## 已完成与文件
@@ -40,7 +40,14 @@
 - 锁屏阻塞经用户解锁解除，剩余验收已全部完成。旧的停滞SDK客户端退出码没有被计为运行通过。Python的AppKit对象曾返回旧进程缓存，原生Swift/窗口server查询用于恢复；不要复用本交接中的旧PID。
 - 时间模拟中修改日期须先Stop再Start；Pause只会恢复旧时刻。关闭时间面板可能弹出`Stop Time Simulation?`，必须按实际对话框处理，不能把AX操作返回0当作画面已更新。
 - 本任务模拟器最后通过正常退出结束，`zsvirt-girl-final-native`退出码0；`bg_12`也已结束。无需保留模拟器常驻。
-- 本版本未安装到手表；已有88,700字节回读记录只证明旧名1.0.0侧载。腕上显示、续航与公开下载尚未验收。本次没有部署、合并main或发送群消息。
+- 本版本未安装到手表；已有88,700字节回读记录只证明旧名1.0.0侧载。腕上显示、续航与公开下载尚未验收。2026-10-29已按新增授权合并并推送`main`；未部署或发送群消息。
+
+## 2026-10-29 主分支合并
+
+- 远端默认分支为`main`。工作区干净；拉取后`origin/main...feat/zsvirt-girl-device-release`提交数为`0 / 2`，主分支没有独立新增提交。
+- 首次`git fetch origin`失败：本地`remote.origin.fetch`仍只指向已删除的`split/zsvirt-time-20261026`。已用`git config --local --replace-all remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'`修正为标准分支映射，随后拉取成功；没有删除分支或强制推送。
+- `git switch main`及`git merge --ff-only feat/zsvirt-girl-device-release`成功，`main`从`c8616ba`快进到`9017fd3`，包含实现`31b3829`和发布证据`9017fd3`；`git push origin main`返回`c8616ba..9017fd3 main -> main`。
+- 快进没有改写代码、资源或已上传原包，既有构建和模拟器证据仍适用，本阶段未重跑构建、模拟器或测试。合并后仅同步本交接及开发约束中已过时的商店提交状态。
 
 ## 后续具体动作
 
@@ -52,5 +59,5 @@
 ## 恢复提示
 
 ```text
-继续 /Users/zixiaobowen/ZStack/zsvirt-garmin-face-it 的 feat/zsvirt-girl-device-release。ZSvirt 超分娘1.1.0已完成69产品适配、116区域导出、12种分辨率的实际模拟器验收和五种AMOLED尺寸的休眠/唤醒检查；FR265S跨午夜唤醒也已通过。最终IQ SHA09c39103c276b15ee4882b799df892a740b6d0c6601d148ebd3b906b02825c63，已上传商店e6c45ce6-48a7-4178-80ab-01df609acf41，持久化签名验证true；最后记录状态PENDING，未公开上架。先读docs/release-zsvirt-girl-1.1.0.md与两份verification JSON，后续重新读取商店状态。实现31b3829及验收资料已推送当前分支；不要重跑已通过且仍适用的检查。原始包不可覆盖，1.0.0真机安装证据不代表1.1.0。没有新的安装、部署、合并main或群通知授权。最终HTML为docs/zsvirt-super-girl-release.html，当前会话右侧展示；任务模拟器已正常退出。
+继续 /Users/zixiaobowen/ZStack/zsvirt-garmin-face-it 的 main。2026-10-29已按用户授权将 feat/zsvirt-girl-device-release 快进合并并推送到main，包含实现31b3829和发布证据9017fd3；本地origin拉取映射已修正。ZSvirt 超分娘1.1.0已完成69产品适配、116区域导出、12种分辨率的实际模拟器验收和五种AMOLED尺寸的休眠/唤醒检查；FR265S跨午夜唤醒也已通过。最终IQ SHA09c39103c276b15ee4882b799df892a740b6d0c6601d148ebd3b906b02825c63，已上传商店e6c45ce6-48a7-4178-80ab-01df609acf41，持久化签名验证true；2026-10-27最后记录状态PENDING，当前状态需重新查询。先读docs/release-zsvirt-girl-1.1.0.md与两份verification JSON；不要重跑已通过且仍适用的检查。原始包不可覆盖，1.0.0真机安装证据不代表1.1.0。没有新的安装、部署或群通知授权。最终HTML为docs/zsvirt-super-girl-release.html；任务模拟器已正常退出。
 ```
