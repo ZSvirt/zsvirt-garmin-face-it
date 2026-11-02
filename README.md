@@ -1,33 +1,35 @@
-# ZSvirt Garmin 表盘
+# ZSvirt Garmin Watch Faces
 
-[GitHub 仓库](https://github.com/ZSvirt/zsvirt-garmin-face-it) · [开发约束](docs/garmin-dev-project.md) · [问题反馈](https://github.com/ZSvirt/zsvirt-garmin-face-it/issues)
+**English** · [简体中文](README_zh.md)
 
-本仓库维护两款可分别安装的Connect IQ表盘：根目录的 **ZSvirt Time** 和 `faces/zsvirt-girl/` 的 **ZSvirt 超分娘**。两款表盘使用独立UUID、资源、设备矩阵和产物，共用构建入口及 `shared/FaceTime.mc` 时制逻辑。ZSvirt Time从`garmin-face-it/watchfaces/zsvirt-time`提取，保留7个相关Git历史提交；原始发布记录中的旧路径和提交链接是当时的证据。
+[GitHub Repository](https://github.com/ZSvirt/zsvirt-garmin-face-it) · [Development Guide](docs/garmin-dev-project.md) · [Issue Tracker](https://github.com/ZSvirt/zsvirt-garmin-face-it/issues)
 
-本次迁移、GitHub推送与群通知结果见[独立仓库回执](docs/repository-split.html)，接续开发见[仓库交接](docs/codex-handoffs/2026-10-26-standalone-repository.md)。
+This repository maintains two independently installable Connect IQ watch faces: **ZSvirt Time** at the repository root and **ZSvirt 超分娘** in `faces/zsvirt-girl/`. Each has its own UUID, resources, device matrix, and build artifacts. They share the build entry point and the time-formatting logic in `shared/FaceTime.mc`. ZSvirt Time was extracted from `garmin-face-it/watchfaces/zsvirt-time`, preserving seven relevant Git commits. Old paths and commit links in the original release records remain evidence of those releases.
+
+See the [repository split report](docs/repository-split.html) for the migration, GitHub push, and group notification results, and the [repository handoff](docs/codex-handoffs/2026-10-26-standalone-repository.md) for continuing development.
 
 ## ZSvirt Time
 
-以本地时间与ZSvirt官方Logo为主视觉，显示电量和今日步数的Connect IQ表盘。1.3.0扩展至69个官方设备目标，覆盖Enduro、Forerunner及本机官方设备包中的全部35个fēnix目标；完整清单以[独立设备矩阵](docs/compatibility.json)为准。
+A Connect IQ watch face centered on local time and the official ZSvirt logo, with battery level and today's step count. Version 1.3.0 expands support to 69 official device targets, covering Enduro, Forerunner, and all 35 fēnix targets in the locally installed official device packages. The [dedicated device matrix](docs/compatibility.json) is the source of truth for the full list.
 
-- 黑底白字，正式横版 Logo 等比缩放；时间、Logo 和数据根据屏幕与实际字体尺寸排布。
-- 遵循手表 12/24 小时制；12 小时制显示 AM/PM，午夜和正午均为 12 点。
-- 电池图标和整数百分比、脚步图标和完整步数。有效 0 显示 `0`，系统未提供步数时显示 `--`。
-- MIP 休眠保持完整画面；AMOLED 休眠只显示灰色时间与 AM/PM，每分钟交替上下位置，唤醒恢复完整画面。
-- 不显示秒，不添加计时器、动画、后台服务、联网或传感器权限。电量来自 `System.getSystemStats().battery`，今日步数来自 `ActivityMonitor.getInfo().steps`。
-- 应用名 `ZSvirt Time`，UUID `cb51f19636e64ae1b979bfd8bf070e31`，沿用原签名，与耐力仪表独立安装。
+- White text on a black background, with the official horizontal logo scaled proportionally. Time, logo, and data are laid out using the screen dimensions and actual font metrics.
+- Follows the watch's 12/24-hour setting. The 12-hour format includes AM/PM and displays both midnight and noon as 12.
+- Shows a battery icon with an integer percentage and a footsteps icon with the full step count. A valid zero is displayed as `0`; unavailable step data is displayed as `--`.
+- MIP displays retain the full screen in sleep mode. AMOLED displays show only gray time and AM/PM, alternating between upper and lower positions each minute. Waking restores the full screen.
+- No seconds, timers, animations, background services, network access, or sensor permissions. Battery level comes from `System.getSystemStats().battery`; today's steps come from `ActivityMonitor.getInfo().steps`.
+- App name: `ZSvirt Time`. UUID: `cb51f19636e64ae1b979bfd8bf070e31`. Uses the original signing identity and installs independently of the endurance dashboard watch face.
 
-fēnix6系列包含`fenix6`、`fenix6pro`、`fenix6s`、`fenix6spro`和`fenix6xpro`，由官方目标覆盖6／6S／6X的标准版、Pro、Sapphire、Solar及对应区域变体。另包含官方fēnix3、5、7、8、9、Chronos和E目标。最低API为1.4.0；部分旧机地区固件仍为API1.3.1，未包含在发行包中，具体可用型号以商店兼容列表为准。
+The fēnix 6 family includes `fenix6`, `fenix6pro`, `fenix6s`, `fenix6spro`, and `fenix6xpro`. These official targets cover the standard, Pro, Sapphire, and Solar editions of the 6/6S/6X, including their regional variants. Official fēnix 3, 5, 7, 8, 9, Chronos, and E targets are also included. The minimum API version is 1.4.0. Some regional firmware versions on older devices remain on API 1.3.1 and are excluded from the release package; consult the store's compatibility list for available models.
 
-2026-10-26提交1.3.0时，Connect IQ内部版本为4、状态为PENDING；商店主记录确认116个区域型号，fēnix6系列对应20个区域型号全部包含，实际兼容页已显示6／6S／6X及Pro、Sapphire、Solar变体。[商店预览](https://apps-developer.garmin.com/zh-CN/apps/2702e86b-ba01-44ed-9d5a-9b29777945f4?tid=1)在审核通过前仅账户本人可见，详见[发布记录](docs/release-1.3.0.md)。历史原包及1.0.0–1.2.0记录保留。
+When version 1.3.0 was submitted on 2026-10-26, the Connect IQ internal version was 4 and its status was PENDING. The main store record confirmed 116 regional models, including all 20 regional models in the fēnix 6 family. The compatibility page displayed the 6/6S/6X and their Pro, Sapphire, and Solar variants. The [store preview](https://apps-developer.garmin.com/zh-CN/apps/2702e86b-ba01-44ed-9d5a-9b29777945f4?tid=1) is visible only to the publishing account until approval. See the [release record](docs/release-1.3.0.md). Original release packages and the records for versions 1.0.0–1.2.0 are retained.
 
-## ZSvirt 超分娘表盘
+## ZSvirt 超分娘 Watch Face
 
-采用ZSvirt站点资源中的正式半身立绘，白底、大幅人物与大号单行时间，下方显示本地月日（`MM/DD`）和电量。人物按屏高等比缩放并水平居中，Enduro 3的裁剪视觉中心向右调整约10像素；不显示独立Logo、步数、星期或秒钟。跟随系统12/24小时制，12小时制附AM/PM；MIP休眠保持完整画面，AMOLED休眠切换为黑底灰色时间与AM/PM，按分钟奇偶在上下区域换位，唤醒恢复人物画面。
+Uses the official half-body character artwork from the ZSvirt website, with a white background, a large character portrait, and large single-line time. The local month/day (`MM/DD`) and battery level appear below. The artwork is scaled proportionally to screen height and centered horizontally; on Enduro 3, the crop's visual center is shifted about 10 pixels to the right. There is no separate logo, step count, weekday, or seconds display. It follows the system's 12/24-hour setting, with AM/PM in 12-hour mode. MIP sleep mode retains the full screen. AMOLED sleep mode shows gray time and AM/PM on black, alternating between upper and lower areas on even and odd minutes. Waking restores the character screen.
 
-1.1.0扩展至 **69个官方产品目标、12种分辨率，最低API1.4.0**，覆盖Enduro、Forerunner和fēnix系列的MIP/AMOLED设备。当前默认应用名、简体中文名及商店中英文名称统一为`ZSvirt 超分娘`，UUID保持`29b9c146b06f45d985a3cc93b6dde7d5`；两种语言均使用`MM/DD`。本应用独立维护[设备矩阵](faces/zsvirt-girl/docs/compatibility.json)和[双语商店文案](faces/zsvirt-girl/docs/store-listing.json)。产品目标不等于所有区域固件均可安装；API1.3.1的旧区域版本由SDK忽略，不进入发行包。
+Version 1.1.0 expands support to **69 official product targets and 12 resolutions, with a minimum API version of 1.4.0**, covering MIP and AMOLED devices in the Enduro, Forerunner, and fēnix families. The default app name, Simplified Chinese app name, and both English and Chinese store names are all `ZSvirt 超分娘`. The UUID remains `29b9c146b06f45d985a3cc93b6dde7d5`, and both languages use `MM/DD`. This app maintains its own [device matrix](faces/zsvirt-girl/docs/compatibility.json) and [bilingual store listing](faces/zsvirt-girl/docs/store-listing.json). A supported product target does not mean every regional firmware version can install the app: the SDK skips older regional versions on API 1.3.1, excluding them from the release package.
 
-人物按设备真实调色板生成：MIP包含8、14、64、66个不透明色条目及ARGB2222，AMOLED使用RGB565；同为14色的不同调色板分别生成资源。12种分辨率及对应格式见[开发约束](docs/garmin-dev-project.md#zsvirt-超分娘-行为与资源)，正式原图、SHA-256和裁剪/调色过程见[素材来源](faces/zsvirt-girl/assets/SOURCES.json)。
+Character resources are generated for the actual device palettes. MIP resources use palettes with 8, 14, 64, or 66 opaque color entries, or ARGB2222; AMOLED resources use RGB565. Different 14-color palettes receive separate resources. See the [development guide](docs/garmin-dev-project.md#zsvirt-超分娘-行为与资源) for the 12 resolutions and their formats, and the [asset sources](faces/zsvirt-girl/assets/SOURCES.json) for the official original artwork, SHA-256, and cropping and color-conversion process.
 
 ```sh
 python3 scripts/generate-resources.py --face girl
@@ -36,52 +38,52 @@ python3 scripts/build.py --face girl --device enduro3 --release --run
 python3 scripts/build.py --face girl --package 1.1.0
 ```
 
-真机PRG在`bin/zsvirt-girl/zsvirt-girl-enduro3.prg`，1.1.0原始IQ包在`artifacts/zsvirt-girl/release-1.1.0/`。全目标签名导出116/116成功；12种分辨率的代表设备已通过实际模拟器画面检查，5个AMOLED目标已检查休眠/唤醒，FR265S另通过跨午夜唤醒。2026-10-27已提交[Garmin商店](https://apps.garmin.com/apps/e6c45ce6-48a7-4178-80ab-01df609acf41)，签名回读通过，版本1.1.0、内部版本1、状态`PENDING`；审核通过前仅发布账号可见。当前1.1.0尚未安装到手表。详见[发布记录](docs/release-zsvirt-girl-1.1.0.md)、[HTML回执](docs/zsvirt-super-girl-release.html)及[当前交接](docs/codex-handoffs/2026-10-27-zsvirt-super-girl-release.md)。
+The device PRG is at `bin/zsvirt-girl/zsvirt-girl-enduro3.prg`; the original 1.1.0 IQ package is in `artifacts/zsvirt-girl/release-1.1.0/`. Signed export succeeded for all 116/116 regional targets. Representative devices for all 12 resolutions passed actual simulator visual checks; five AMOLED targets were checked for sleep and wake behavior, and FR265S also passed a wake check across midnight. The app was submitted to the [Garmin store](https://apps.garmin.com/apps/e6c45ce6-48a7-4178-80ab-01df609acf41) on 2026-10-27, with the signature verified after submission. The recorded version was 1.1.0, internal version 1, and status `PENDING`; the listing is visible only to the publishing account until approval. Version 1.1.0 has not been installed on a watch. See the [release record](docs/release-zsvirt-girl-1.1.0.md), [HTML report](docs/zsvirt-super-girl-release.html), and [current handoff](docs/codex-handoffs/2026-10-27-zsvirt-super-girl-release.md).
 
-历史安装：2026-10-27已将当时名为`ZSvirt Girl`的1.0.0的88,700字节PRG侧载到Enduro 3，设备回读与当时暂存包逐字节一致，见[安装记录](docs/verification/zsvirt-girl-installation-20261027.json)。当前新名为`ZSvirt 超分娘`；该历史安装不包含本次改名及1.1.0的新改动，腕上显示与续航尚未验收。[1.0.0实际效果与验收](docs/zsvirt-girl.html) · [1.0.0交接](docs/codex-handoffs/2026-10-27-zsvirt-girl.md)。
+Historical installation: on 2026-10-27, the 88,700-byte PRG for version 1.0.0, then named `ZSvirt Girl`, was sideloaded onto Enduro 3. The file read back from the device matched the staged package byte for byte; see the [installation record](docs/verification/zsvirt-girl-installation-20261027.json). The current name is `ZSvirt 超分娘`. That historical installation does not include the rename or the changes in 1.1.0. On-wrist appearance and battery life have not been verified. [Version 1.0.0 visuals and verification](docs/zsvirt-girl.html) · [Version 1.0.0 handoff](docs/codex-handoffs/2026-10-27-zsvirt-girl.md).
 
-## 构建与运行
+## Build and Run
 
-使用Connect IQ SDK、Java 17、矩阵中的官方设备包及仓库外原签名密钥。构建需要Python 3.11+；重新生成图片需要Pillow。现有签名默认位于`~/.local/share/garmin-face-it/developer_key.der`，这是仓库外的签名身份，不依赖旧仓库目录；其它环境通过`--key /path/to/developer_key.der`提供原密钥。以下命令均从本仓库根目录执行：
+Use the Connect IQ SDK, Java 17, the official device packages listed in the matrix, and the original signing key stored outside this repository. Builds require Python 3.11+; regenerating images requires Pillow. The existing signing key defaults to `~/.local/share/garmin-face-it/developer_key.der`. This signing identity is external to the repository and does not depend on the old repository directory. In other environments, supply the original key with `--key /path/to/developer_key.der`. Run the following commands from this repository's root:
 
 ```sh
-# 构建 Enduro 3 真机 PRG（默认目标）
+# Build an Enduro 3 device PRG (the default target)
 python3 scripts/build.py --device enduro3
 
-# 构建本表盘全部69个目标
+# Build all 69 targets for this watch face
 python3 scripts/build.py --all
 
-# 官方模拟器已启动时，运行去除调试信息后的目标
+# Run a build without debug information, with the official simulator already open
 python3 scripts/build.py --device fr265 --release --run
 
-# 全目标签名商店包
+# Export a signed store package for all targets
 python3 scripts/build.py --package 1.3.0
 
-# 需要修改时制逻辑时运行边界测试
+# Run boundary tests when changing the time-formatting logic
 python3 scripts/build.py --device enduro3 --test --run
 
-# 从正式源图重建尺寸、调色板及 launcher 资源
+# Regenerate sizes, palettes, and launcher resources from the official source image
 python3 scripts/generate-resources.py
 ```
 
-构建前自动从所选表盘的`docs/compatibility.json`生成对应应用根目录的`manifest.xml`和`monkey.jungle`，并生成本次目标的构建快照；不要手改生成配置。`--face time`是默认值，`--face girl`选择新表盘；`scripts/configure.py`和`scripts/generate-resources.py`也接受该参数。工程不依赖原工作区。
+Before building, the scripts generate `manifest.xml` and `monkey.jungle` in the selected app's root from its `docs/compatibility.json`, along with a build snapshot for the selected target. Do not edit generated configuration by hand. `--face time` is the default; `--face girl` selects the character watch face. `scripts/configure.py` and `scripts/generate-resources.py` also accept this option. The project does not depend on the original workspace.
 
-支持`--sdk`、`CIQ_SDK_HOME`与`--key`；SDK不明确或签名密钥缺失时直接报错。真机产物为`bin/zsvirt-time-<device>.prg`；带`-sim`、`-sim-release`、`-tests`的文件仅供官方模拟器。日志、哈希和退出码保留在`bin/`；构建产物与密钥不提交Git。
+The build supports `--sdk`, `CIQ_SDK_HOME`, and `--key`. It fails explicitly if the SDK cannot be identified or the signing key is missing. Device builds are written to `bin/zsvirt-time-<device>.prg`; files with `-sim`, `-sim-release`, or `-tests` are for the official simulator only. Logs, hashes, and exit codes are retained in `bin/`. Build artifacts and keys are not committed to Git.
 
-`--run` 持续连接应用直到结束。切换机型前在模拟器使用 **File → Kill Device**，防止沿用上一款设备；只执行 Kill App 不足以切换目标。结束本轮验收后退出本次独占启动的模拟器。
+`--run` keeps the connection open until the app exits. Before switching device models, use **File → Kill Device** in the simulator to avoid reusing the previous device. Kill App alone does not switch the target. After verification, close any simulator instance started exclusively for that session.
 
-`--package VERSION` 使用官方 `-e -r` 导出，产物及报告保留于 `artifacts/release-VERSION/`。版本格式为 `MAJOR.MINOR.PATCH`；不能与单设备、模拟器或测试选项混用。
+`--package VERSION` uses the official `-e -r` export options and retains artifacts and reports in `artifacts/release-VERSION/`. Versions must use the `MAJOR.MINOR.PATCH` format. This option cannot be combined with single-device, simulator, or test options.
 
-## 资源与品牌
+## Assets and Branding
 
-Logo 来自 [ZSvirt 官方下载页](https://zsvirt.io/download)。`assets/` 保留正式源图，[SOURCES.json](assets/SOURCES.json)记录来源和 SHA-256。生成器只裁透明边、等比缩放、合成黑底，并按设备调色板生成黑白或四级灰图像；不重画 Logo，不用普通字体替代字标。Launcher 按官方设备定义的独立尺寸生成。时间使用设备内置字体。
+The logo comes from the [official ZSvirt download page](https://zsvirt.io/download). Official source images are retained in `assets/`; [SOURCES.json](assets/SOURCES.json) records their origins and SHA-256 hashes. The generator only trims transparent edges, scales proportionally, composites onto black, and produces black-and-white or four-level grayscale images for the device palette. It does not redraw the logo or replace the wordmark with a regular font. Launcher resources use the separate dimensions specified by the official device definitions. The time display uses built-in device fonts.
 
-Logo 属于 ZSvirt 品牌资产；官网下载页未附单独 Logo 许可，不将其视为商标权转让。
+The logo is a ZSvirt brand asset. The official download page does not include a separate logo license; availability of the asset does not constitute a transfer of trademark rights.
 
-## 验收边界
+## Verification Scope
 
-构建、模拟器显示、商店提交、真机安装与续航分别验收。既有画面及1.3.0发布结果见[发布回执](docs/delivery.html)。2026-10-26已将此前Enduro 3专用的时间＋Logo＋电量＋步数版侧载并回读校验，14,844字节安装包与设备回读逐字节一致，详见[安装记录](docs/verification/enduro3-installation-20261026.json)；安装期间并行产生的后续改动不属于这次已安装版本。尚未验收腕上显示或测量续航；AMOLED亮像素检查不能替代真机烧屏与功耗验证。
+Builds, simulator rendering, store submission, device installation, and battery life require separate verification. See the [release report](docs/delivery.html) for existing visuals and the 1.3.0 release results. On 2026-10-26, the earlier Enduro 3-only version with time, logo, battery, and steps was sideloaded and read back for verification. The 14,844-byte installation package matched the device readback byte for byte; see the [installation record](docs/verification/enduro3-installation-20261026.json). Changes made in parallel during installation are not part of that installed version. On-wrist appearance and battery life have not been verified. AMOLED lit-pixel checks do not replace hardware burn-in or power-consumption validation.
 
-独立仓库迁移已逐文件核验52个构建输入，确认与迁出前一致；新路径下Enduro 3、fēnix 6 Pro真机目标及FR265去除调试信息的模拟器目标构建通过。ZSvirt Time的1.0.0–1.3.0原始商店包复制后哈希一致，保留在本地`artifacts/`。详见[迁移验证记录](docs/verification/repository-split-20261026.json)。该次迁移未重新运行模拟器、单元测试或全仓库测试，也未再次上传商店或安装手表。
+The repository split verified all 52 build inputs individually against their pre-migration versions. Builds passed from the new path for the Enduro 3 and fēnix 6 Pro device targets and the FR265 simulator target without debug information. The original ZSvirt Time store packages for versions 1.0.0–1.3.0 retained matching hashes after copying and remain in the local `artifacts/` directory. See the [migration verification record](docs/verification/repository-split-20261026.json). That migration did not rerun the simulator, unit tests, or the full repository test suite, and did not upload to the store or install on a watch again.
 
-[隐私说明](docs/privacy.md) · [问题反馈](https://github.com/ZSvirt/zsvirt-garmin-face-it/issues)
+[Privacy Notice](docs/privacy.md) · [Issue Tracker](https://github.com/ZSvirt/zsvirt-garmin-face-it/issues)
